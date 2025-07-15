@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CarValueXpert - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    .hero {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+    .hero h1 {
+      font-size: 3em;
+      font-weight: bold;
+    }
+    .api-box {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+    .car-card {
+      background: white;
+      color: black;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+    .car-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .car-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 10px rgba(255,255,255,0.4);
+    }
+    .btn-style {
+      margin: 10px;
+      padding: 10px 20px;
+      font-weight: bold;
+    }
+    marquee {
+      background: #ffcc00;
+      color: #000;
+      font-weight: bold;
+      padding: 10px 0;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🟡 Marquee -->
+  <marquee behavior="scroll" direction="left">🚗 Welcome to CarValueXpert – India’s Smart Car Price Predictor! 🔮 Accurate resale value using ML 📊</marquee>
+
+  <!-- 🔵 Hero -->
+  <div class="hero">
+    <h1>🚗 CarValueXpert</h1>
+    <p>Predict your car's resale price using Machine Learning!</p>
+    <div>
+      <a href="/predict" class="btn btn-success btn-style">🔍 Start Prediction</a>
+      <a href="/admin/register" class="btn btn-outline-light btn-style">📝 Admin Register</a>
+      <a href="/admin/login" class="btn btn-outline-light btn-style">🔐 Admin Login</a>
+    </div>
+  </div>
+
+  <!-- 🧠 API Info -->
+  <div class="api-box">
+    <h4>🧠 About the API</h4>
+    <p>
+      This platform uses an XGBoost Regression model trained on Indian car datasets to provide accurate resale price predictions.  
+      Input features include brand, model, year, fuel type, mileage, engine CC, and more.
+    </p>
+  </div>
+
+  <!-- 🚘 Car Cards -->
+  <div class="container">
+    <div class="row">
+      
+      <!-- ✅ Kia Sonet -->
+      <div class="col-md-4">
+        <div class="car-card">
+          <img src="{{ url_for('static', filename='images/kia_sonet.jpg') }}" alt="Kia Sonet">
+          <h5 class="mt-2">Kia Sonet</h5>
+          <p>Diesel | Automatic | 20 km/l</p>
+        </div>
+      </div>
+
+      <!-- ✅ Hyundai i20 -->
+      <div class="col-md-4">
+        <div class="car-card">
+          <img src="{{ url_for('static', filename='images/hyundai_i20.jpg') }}" alt="i20">
+          <h5 class="mt-2">Hyundai i20</h5>
+          <p>Diesel | Manual | 25 km/l</p>
+        </div>
+      </div>
+
+      <!-- ✅ Honda Amaze -->
+      <div class="col-md-4">
+        <div class="car-card">
+          <img src="{{ url_for('static', filename='images/honda_amaze.jpg') }}" alt="Amaze">
+          <h5 class="mt-2">Honda Amaze</h5>
+          <p>Petrol | Automatic | 18 km/l</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 🔻 Footer -->
+  <footer>
+    Made with ❤️ by CarValueXpert Team | 2025
+  </footer>
+
+</body>
+</html>

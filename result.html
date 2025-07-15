@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🔮 Price Prediction - CarValueXpert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(120deg, #2c3e50, #3498db);
+            color: #fff;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        marquee {
+            width: 100%;
+            background: #f9ca24;
+            color: #222;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background-color: #fff;
+            color: #222;
+            border-radius: 20px;
+            padding: 35px 30px;
+            width: 100%;
+            max-width: 650px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        img {
+            width: 100%;
+            max-height: 240px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 36px;
+            color: #27ae60;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 24px;
+            background: #2980b9;
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background: #1f618d;
+        }
+
+        canvas {
+            margin-top: 30px;
+        }
+
+        footer {
+            margin-top: 40px;
+            color: #eee;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<marquee>🚘 Your Car's Predicted Resale Value is Ready! | Powered by CarValueXpert ML Engine 🔮</marquee>
+
+<div class="card">
+    <h2>🚗 {{ car.Brand }} {{ car.Model }} ({{ car.Year }})</h2>
+
+    <!-- Car Image -->
+    <img src="{{ url_for('static', filename='images/' + car.Brand|lower + '_' + car.Model|lower + '.jpg') }}" alt="Car Image">
+
+    <!-- Predicted Price -->
+    <p class="price">💰 Estimated Price: ₹{{ "{:,.0f}".format(prediction) }}</p>
+
+    <!-- Links -->
+    <a class="button" href="https://www.cardekho.com/used-cars+in+all+cities/{{ car.Brand }}-{{ car.Model }}" target="_blank">
+        🔗 Compare on CarDekho
+    </a>
+    <a class="button" href="/">🔁 Try Another Car</a>
+
+    <!-- Chart -->
+    <canvas id="priceChart" width="400" height="200"></canvas>
+</div>
+
+<footer>
+    © 2025 CarValueXpert. All rights reserved.
+</footer>
+
+<script>
+    const ctx = document.getElementById('priceChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Predicted Price', 'Market Avg'],
+            datasets: [{
+                label: '₹ Value',
+                data: [{{ prediction }}, {{ market_avg }}],
+                backgroundColor: ['#27ae60', '#2980b9'],
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    ticks: {
+                        callback: value => '₹' + value.toLocaleString()
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

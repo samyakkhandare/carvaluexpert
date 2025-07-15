@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Car Price Prediction | CarValueXpert</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+    }
+    .form-container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      margin-top: 60px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+    label {
+      font-weight: 600;
+    }
+    .form-control {
+      background-color: #fefefe;
+      color: #000;
+      font-weight: bold;
+    }
+    .btn-primary {
+      font-weight: bold;
+      background: #ffc107;
+      border: none;
+      color: #000;
+    }
+    .btn-primary:hover {
+      background: #e0a800;
+    }
+    h2 {
+      text-shadow: 1px 1px 2px #000;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="form-container mx-auto" style="max-width: 700px;">
+    <h2 class="text-center mb-4">🔍 Predict Your Car's Resale Price</h2>
+    <form method="POST">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label>🚗 Brand</label>
+          <input type="text" class="form-control" name="brand" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>📦 Model</label>
+          <input type="text" class="form-control" name="model" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>📅 Year</label>
+          <input type="number" class="form-control" name="year" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>⛽ Fuel Type</label>
+          <select class="form-control" name="fuel_type" required>
+            <option>Petrol</option>
+            <option>Diesel</option>
+            <option>CNG</option>
+            <option>Electric</option>
+          </select>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>⚙️ Transmission</label>
+          <select class="form-control" name="transmission" required>
+            <option>Manual</option>
+            <option>Automatic</option>
+          </select>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>📈 Mileage (km/l)</label>
+          <input type="number" step="0.1" class="form-control" name="mileage" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>🔧 Engine CC</label>
+          <input type="number" class="form-control" name="engine_cc" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label>🪑 Seating Capacity</label>
+          <input type="number" class="form-control" name="seating_capacity" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>💸 Avg. Service Cost (₹)</label>
+          <input type="number" class="form-control" name="service_cost" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">🔮 Predict Price</button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

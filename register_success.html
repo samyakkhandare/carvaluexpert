@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Success</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #43cea2, #185a9d);
+      color: white;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      padding-top: 100px;
+    }
+    .box {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      margin: auto;
+      width: 60%;
+      border-radius: 15px;
+    }
+    .btn-home {
+      margin-top: 20px;
+      background-color: #ffc107;
+      color: black;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>✅ Registration Successful!</h2>
+    <p>Welcome, <strong>{{ username }}</strong>. You are now registered.</p>
+    <a href="/" class="btn btn-home btn-lg">🏠 Back to Home</a>
+  </div>
+</body>
+</html>
